@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarathonRegistration</title>
+</head>
+
+<body>
+    <!-- http://127.0.0.1:5500/5marthonRegistrationForm.html?firstname=Akshay&lastname=Kumar&race=half&email=akshayace0302%40gmail.com&passcode=akki4546&age_group=ya -->
+    <h1>Race Registration</h1>
+    <form action="">
+        <div>
+            <label for="first">First Name</label>
+            <input type="text" name="firstname" id="first" required>
+            <label for="last">Last Name</label>
+            <input type="text" name="lastname" id="last" required>
+        </div>
+
+        <p>Select the race:</p>
+
+        <div>
+            <input type="radio" name="race" id="funfun" value="funfun">
+            <label for="funfun">FunRun5K</label>
+        </div>
+        <div>
+            <input type="radio" name="race" id="half" value="half">
+            <label for="half">Half Marathon</label>
+        </div>
+        <div>
+            <input type="radio" name="race" id="full" value="full">
+            <label for="full">Full Marathon</label>
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="passcode" id="password" placeholder="Password" required>
+
+            <div>
+                <label for="agegroup">Select your age group</label>
+                <select name="age_group" id="agegroup">
+                    <option value="kids">Under 18</option>
+                    <option value="ya">18-30</option>
+                    <option value="adults">30-50</option>
+                    <option value="oldies">50-80</option>
+                </select>
+            </div>
+
+            <button>Register</button>
+
+    </form>
+
+</body>
+
+</html>

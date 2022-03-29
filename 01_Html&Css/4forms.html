@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forms</title>
+</head>
+
+<body>
+    <h1>Forms Demo</h1>
+    <form action="/tacos">
+        <!-- input doesn't have closing tag -->
+
+        <!-- file://tacos?username=rawwrr -->
+        <!-- file:///C:/tacos?username=fgf&password=fgfgf&color=%23000000&number=2100267&time=22%3A31 -->
+        <button type="button">This will not sumbit the form</button>
+        <p>
+            <label for="name">Enter your username:</label>
+            <input id="name" type="text" placeholder="Username" name="username">
+        </p>
+
+        <p>
+            <label for="password">Enter your password:</label>
+            <input id="password" type="password" placeholder="password" name="password">
+        </p>
+
+        <p>
+            <label for="color">Enter your color:</label>
+            <input type="color" id="color" name="color" placeholder="">
+        </p>
+
+        <p>
+            <label for="number">Enter your phone number</label>
+            <input type="number" id=number name="number" placeholder="" min="1" max="100" step="2" value="45">
+        </p>
+
+        <p>
+            <label for="time">Enter current time:</label>
+            <input type="time" id="time" name="time" placeholder="">
+        </p>
+
+        <button>Submit</button>
+        <input type="submit" value="click Me">
+
+
+    </form>
+
+    <hr>
+    <!-- Reddit -->
+    <button>Submit</button>
+    <h2>HiJacking Searches</h2>
+    <h3>Search Reddit</h3>
+    <form action="https://www.reddit.com/search">
+        <!-- https://www.reddit.com/search/?q=cat -->
+        <input type="text" id="search" name="q">
+        <button>Reddit Search</button>
+    </form>
+
+    <!-- Google -->
+    <hr>
+    <h3>Search Google</h3>
+    <form action="https://www.google.com/search">
+        <!-- https://www.reddit.com/search/?q=cat -->
+        <input type="text" id="search" name="q">
+        <button>Google Search</button>
+    </form>
+
+    <!-- youtube -->
+    <hr>
+    <h3>Search Youtube</h3>
+    <form action="https://www.youtube.com/results">
+        <!-- https://www.reddit.com/search/?q=cat -->
+        <input type="text" id="search" name="search_query">
+        <button>Youtube Search</button>
+    </form>
+
+    <h2>More Inputs</h2>
+    <form action="/helpo">
+        <!--input id and label for should be same -->
+        <input type="checkbox" id="agree" name="agree_toservices" checked>
+        <label for="agree">agree</label>
+        <p>
+            <label for="xs">XS:</label>
+            <input type="radio" name="size" id="xs" value="xs">
+            <label for="s">S</label>
+            <input type="radio" name="size" id="s" value="s">
+            <label for="m">M</label>
+            <input type="radio" name="size" id="m" value="m">
+        </p>
+        <p>
+            <label for="meal">Please select a meal type:</label>
+            <select name="meal" id="meal">
+                <optgroup label="Breakfast">
+                    <option value="cheese">cheese</option>
+                    <option value="butter" selected>Butter</option>
+                    <option value="roti">Roti</option>
+                </optgroup>
+                <optgroup label="Dinner">
+                    <option value="sabji">sabji</option>
+                    <option value="meat">Meat</option>
+                    <option value="dosa" disabled>dosa</option>
+                </optgroup>
+            </select>
+        </p>
+        <p>
+            <!-- value-45 prebuilt, step-jump by -->
+            <label for="range">Amount Of Cheese</label>
+            <input type="range" id="range" name="cheese_label" min="1" max="100" step="10" value="45">
+        </p>
+
+        <p>
+            <label for="requests">Any Special Requests</label>
+            <br>
+            <textarea name="Requests?" id="requests" rows="10" cols="40" placeholder="Type Something here"></textarea>
+        </p>
+
+        <button>Submit</button>
+    </form>
+
+    <h2>Validations</h2>
+    <form action="/dummy">
+        <label for="first">Enter First Name: </label>
+        <input type="text" name="first" id="first" required>
+
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="" minlength="3" maxlength="20" required>
+        </p>
+
+        <p>
+            <input type="email" required>
+            <input type="url" required>
+        </p>
+
+        <button>Register</button>
+    </form>
+
+</body>
+
+</html>

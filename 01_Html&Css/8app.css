@@ -1,0 +1,110 @@
+/* 
+* {
+    background-color:rgb(3, 59, 59);
+} */
+
+body { 
+    background-color: white;
+}
+
+button {
+    font-size: 30px;
+    background-color: #a8dadc;
+}
+
+h1, h2 {
+    color: white;
+}
+
+#signup {
+    background-color: rgb(10, 195, 228);
+    color: #e01541;
+}
+
+span {
+    color: violet;
+}
+
+.tag {
+    background-color:white;
+    color: rgb(31, 37, 6);
+    font-size: 16px;
+    letter-spacing: 10px;
+}
+
+.post a {
+    color:rgb(190, 224, 52);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+footer a {
+    color: teal;
+}
+
+input + button {
+    background-color: pink;
+}
+
+h2 + button {
+    font-size: 20px;
+    background-color: magenta;
+}
+
+footer > a {
+    color: black;
+}
+
+/* Attribute selector */
+
+input[type="password"] {
+    color: rgb(156, 101, 101);
+}
+
+section[class="post"] {
+    background-color: purple;
+}
+
+a[href*="google"]  {
+    color: magenta;
+}
+
+.post button:hover {
+    background-color: red;
+    color: rgb(172, 65, 65);
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+.post button:active {
+    background-color:#61cab4;
+}
+
+
+.post:nth-of-type(3n) {
+    background-color:#265970;
+}
+
+h2::first-letter {
+    font-size: 50px;
+}
+
+p::first-line {
+    color: rgb(255, 15, 15);
+}
+
+p::selection {
+    background-color: rgb(51, 23, 209);
+}
+
+.post button:hover {
+    background-color: red;
+    color: rgb(172, 65, 65);
+}
+
+button:hover {
+    background-color:olive;
+    font-size: 10px;
+}

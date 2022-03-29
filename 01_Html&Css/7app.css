@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: aqua underline wavy;
+    letter-spacing: 10px;
+    font-size: 60px;
+    /* font-family: Segoe UI, Futura, Arial, sans-serif; */
+    font-family: monospace;
+}
+
+p {
+    text-align: center;
+    line-height: 2;
+}
+
+a {
+    text-decoration: none;
+}
