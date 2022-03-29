@@ -1,0 +1,52 @@
+// axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+//     .then(res => {
+//         console.log(res.data.bpi.USD.rate)
+//     })
+//     .catch(err => {
+//         console.log("ERROR!", err)
+//     })
+
+
+//async function(AXIOS)
+// const fetchBitcoinPrice = async () => {
+//     try {
+//         const res = await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
+//         console.log(res.data.bpi.USD.rate)
+//     }
+//     catch (e) {
+//         console.log('ERROR!', e)
+//     }
+// }
+
+// fetchBitcoinPrice()
+
+//dad joke
+const jokes = document.querySelector('#jokes');
+const button = document.querySelector('button');
+
+
+const addNewJoke = async () => {
+    const jokeText = await getDadJoke();
+    const newLI = document.createElement('LI');
+    newLI.append(jokeText);
+    jokes.append(newLI);
+    // console.log(jokeText)
+}
+
+const getDadJoke = async () => {
+    try {
+        const config = { headers: { Accept: 'application/json' } };
+        const req = await axios.get('https://icanhazdadjoke.com', config);
+        // console.log(req.data.joke);
+        return req.data.joke;
+    } catch (e) {
+        return "NO JOKES AVAILABLE! SORRY :("
+    }
+}
+
+button.addEventListener('click', addNewJoke);
+
+
+
+
+
