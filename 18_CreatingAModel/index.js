@@ -117,6 +117,18 @@ app.delete("/products/:id", async (req, res) => {
   res.redirect("/products");
 });
 
+const handleValidationError = (err) => {
+  console.dir(err);
+  return new appError(`Validation failed....${err.message}`, 400);
+};
+
+//Mongoose errors
+app.use((err, req, res, next) => {
+  console.log(err.name);
+  if (err.name === "ValidationError") err = handleValidationError(err);
+  next(err);
+});
+
 app.use((err, req, res, next) => {
   const { status = 500, message = "something broke!" } = err;
   res.status(status).send(message);
