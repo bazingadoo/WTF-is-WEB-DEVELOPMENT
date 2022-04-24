@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const productSchema = new mongoose.Schema({
+const productSchema = new Schema({
   name: {
     type: String,
     required: [true, "name can't be empty"],
@@ -14,6 +15,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     lowerCase: true,
     enum: ["fruit", "vegetable", "dairy", "fungai"],
+  },
+  farm: {
+    type: Schema.Types.ObjectId,
+    ref: "Farm",
   },
 });
 
