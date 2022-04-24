@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const appError = require("./AppError");
 
 const Product = require("./models/product");
-const { resolveSrv } = require("dns/promises");
+const Farm = require("./models/farm");
 
 mongoose
   .connect("mongodb://localhost:27017/farmStand")
@@ -24,6 +24,81 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(methodOverride("_method"));
+
+//FARM ROUTES
+
+app.get(
+  "/farms",
+  wrapAsync(async (req, res) => {
+    const farms = await Farm.find({});
+    res.render("farms/index", { farms });
+  })
+);
+
+app.get("/farms/new", (req, res) => {
+  res.render("farms/new");
+});
+
+app.get(
+  "/farms/:id",
+  wrapAsync(async (req, res, next) => {
+    const farm = await Farm.findById(req.params.id).populate("products");
+    // console.log(farm);
+    res.render("farms/show", { farm });
+  })
+);
+
+//deletion mongoose middleware
+app.delete("/farms/:id", async (req, res) => {
+  console.log("deleting");
+  const farm = await Farm.findByIdAndDelete(req.params.id);
+  res.redirect("/farms");
+});
+
+// app.post(
+//   "/farms",
+//   wrapAsync(async (req, res) => {
+//     res.send(req.body);
+//   })
+// );
+
+app.post(
+  "/farms",
+  wrapAsync(async (req, res, next) => {
+    const farm = new Farm(req.body);
+    await farm.save();
+    res.redirect("/farms");
+  })
+);
+
+app.get(
+  "/farms/:id/products/new",
+  wrapAsync(async (req, res) => {
+    // const id = req.params.id;
+    // console.log(id);
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    res.render("products/new", { categories, farm });
+  })
+);
+
+app.post(
+  "/farms/:id/products",
+  wrapAsync(async (req, res) => {
+    // res.send(req.body);
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    const { name, price, category } = req.body;
+    const product = new Product({ name, price, category });
+    farm.products.push(product);
+    product.farm = farm;
+    await farm.save();
+    await product.save();
+    res.redirect(`/farms/${id}`);
+  })
+);
+
+//PRODUCT ROUTES
 
 //request-response
 const categories = ["fruit", "vegetable", "dairy", "fungai"];
@@ -75,7 +150,8 @@ app.get(
   "/products/:id",
   wrapAsync(async (req, res, next) => {
     const { id } = req.params;
-    const product = await Product.findById(id);
+    const product = await Product.findById(id).populate("farm", "name");
+    // console.log(product);
     if (!product) {
       throw new appError("This product does not exist", 404);
     }
@@ -130,7 +206,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  const { status = 500, message = "something broke!" } = err;
+  const { status = 500, message = "something went wrong!" } = err;
   res.status(status).send(message);
 });
 
