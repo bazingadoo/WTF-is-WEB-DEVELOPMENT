@@ -24,6 +24,13 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true })); //for parsing body
 app.use(session(sessionOptions));
 
+const requireLogin = (req, res, next) => {
+  if (!req.session.user_id) {
+    return res.redirect("/login");
+  }
+  next();
+};
+
 app.get("/", (req, res) => {
   res.send("This is the homepage");
 });
@@ -69,11 +76,12 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-app.get("/secretcode", (req, res) => {
-  if (!req.session.user_id) {
-    return res.redirect("/login");
-  }
+app.get("/secretcode", requireLogin, (req, res) => {
   res.render("secret");
+});
+
+app.get("/topsecret", requireLogin, (req, res) => {
+  res.send("this is a top secret");
 });
 
 app.listen("3000", () => {
