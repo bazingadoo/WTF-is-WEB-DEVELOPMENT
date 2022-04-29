@@ -1,0 +1,19 @@
+{
+  "name": "23_bcrypt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "ejs": "^3.1.7",
+    "express": "^4.18.0",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.3.1"
+  }
+}
